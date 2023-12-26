@@ -1,6 +1,6 @@
 export const fetchStats = async (username) => {
     try {
-        const response = await fetch(`/m=hiscore_oldschool/index_lite.ws?player=${username}`);
+        const response = await fetch(`http://localhost:3001/api/stats/${username}`);
 
         const data = await response.text();
         console.log(data);
@@ -16,6 +16,7 @@ export const fetchStats = async (username) => {
 
         skillNames.forEach((name, index) => {
             playerStats[name.toLowerCase()] = skills[index];
+            console.log(playerStats[name.toLowerCase()])
         });
 
         return playerStats;
