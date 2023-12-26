@@ -1,6 +1,7 @@
 import React from 'react';
 
 const LevelInput = ({ onTargetLevelChange, currentLevel, targetLevel }) => {
+  console.log(currentLevel)
   return (
     <div>
       <div>
