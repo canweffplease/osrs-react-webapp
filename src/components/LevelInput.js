@@ -1,11 +1,13 @@
 import React from 'react';
 
-const LevelInput = ({ onTargetLevelChange, currentLevel, targetLevel }) => {
-  console.log(currentLevel)
+const LevelInput = ({ onTargetLevelChange, currentLevel, currentXp, targetLevel }) => {
   return (
     <div>
       <div>
         Current Level: {currentLevel}
+      </div>
+      <div>
+        Current XP: {currentXp}
       </div>
       <input 
         type="number" 

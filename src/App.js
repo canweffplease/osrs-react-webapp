@@ -25,9 +25,13 @@ const App = () => {
   };
 
   const calculate = () => {
-    const currentLevel = playerStats[selectedSkill];
-    const xpNeeded = calculateXP(currentLevel, parseInt(targetLevel, 10));
-    setXpNeeded(xpNeeded);
+    if (playerStats[selectedSkill] && playerStats[selectedSkill].xp !== undefined) {
+      const currentXp = playerStats[selectedSkill].xp;
+      const xpNeeded = calculateXP(currentXp, parseInt(targetLevel, 10));
+      setXpNeeded(xpNeeded);
+    } else {
+      console.error('Current XP not available for selected skill');
+    }
   };
 
   return (
@@ -44,10 +48,11 @@ const App = () => {
 
       <LevelInput 
         onTargetLevelChange={(e) => setTargetLevel(e.target.value)} 
-        currentLevel={playerStats[selectedSkill] || ''} 
+        currentLevel={playerStats[selectedSkill] ? playerStats[selectedSkill].level : ''} 
+        currentXp={playerStats[selectedSkill] ? playerStats[selectedSkill].xp : ''} 
         targetLevel={targetLevel}
       />
-
+      
       <button onClick={calculate}>Calculate XP</button>
       {xpNeeded !== null && <p>XP Needed: {xpNeeded}</p>}
     </div>

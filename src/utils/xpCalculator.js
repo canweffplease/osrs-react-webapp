@@ -1,15 +1,13 @@
-export const calculateXP = (currentLevel, targetLevel) => {
-    const xpForLevel = (level) => {
-      let xp = 0;
-      for (let L = 1; L < level; L++) {
-        xp += Math.floor(L + 300 * Math.pow(2, L / 7));
-      }
-      return xp;
-    };
-  
-    const currentXP = xpForLevel(currentLevel);
-    const targetXP = xpForLevel(targetLevel);
-  
-    return targetXP - currentXP;
-  };
-  
+function levelToXp(level) {
+  let xp = 0;
+  for (let i = 1; i < level; i++) {
+      xp += Math.floor(i + 300 * Math.pow(2, i / 7));
+  }
+  return Math.floor(xp / 4);
+}
+
+export const calculateXP = (currentXp, targetLevel) => {
+  const targetXp = levelToXp(targetLevel);
+  if (targetXp - currentXp < 0) return 0;
+  else return targetXp - currentXp;
+};
