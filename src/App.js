@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import SkillSelect from './components/SkillSelect';
+//import SkillSelect from './components/SkillSelect';
+import SkillButton from './components/SkillButton';
 import LevelInput from './components/LevelInput';
 import { fetchStats } from './utils/fetchStats';
 import { calculateXP } from './utils/xpCalculator';
+import skills from './components/skills';
 import './App.css';
 
 const App = () => {
@@ -21,8 +23,8 @@ const App = () => {
     setPlayerStats(stats);
   };
 
-  const handleSkillChange = (event) => {
-    setSelectedSkill(event.target.value);
+  const handleSkillSelect = (skillName) => {
+    setSelectedSkill(skillName);
   };
 
   const calculate = () => {
@@ -48,7 +50,7 @@ const App = () => {
       </div>
   
       <div className="form-group-row">
-        <SkillSelect onSkillChange={handleSkillChange} />
+        
         <LevelInput 
           onTargetLevelChange={(e) => setTargetLevel(e.target.value)} 
           currentLevel={playerStats[selectedSkill] ? playerStats[selectedSkill].level : ''} 
@@ -56,12 +58,19 @@ const App = () => {
           targetLevel={targetLevel}
         />
       </div>
-  
+      {Object.keys(skills).map((skill) => (
+        <SkillButton
+          key={skill}
+          skillName={skill}
+          iconPath={skills[skill]}
+          onSkillSelect={handleSkillSelect}
+        />
+      ))}
       <button onClick={calculate}>Calculate XP</button>
       {xpNeeded !== null && <p>XP Needed: {xpNeeded}</p>}
     </div>
   );
   
 };
-
+//<SkillSelect onSkillChange={handleSkillChange} />
 export default App;

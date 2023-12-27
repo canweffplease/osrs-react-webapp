@@ -1,0 +1,26 @@
+const skills = {
+    attack: 'skill-icons/Attack_icon.png',
+    defence: 'skill-icons/Defence_icon.png',
+    strength: 'skill-icons/Strength_icon.png',
+    hitpoints: 'skill-icons/Hitpoints_icon.png',
+    ranged: 'skill-icons/Ranged_icon.png',
+    prayer: 'skill-icons/Prayer_icon.png',
+    magic: 'skill-icons/Magic_icon.png',
+    cooking: 'skill-icons/Cooking_icon.png',
+    woodcutting: 'skill-icons/Woodcutting_icon.png',
+    fletching: 'skill-icons/Fletching_icon.png',
+    fishing: 'skill-icons/Fishing_icon.png',
+    firemaking: 'skill-icons/Firemaking_icon.png',
+    crafting: 'skill-icons/Crafting_icon.png',
+    smithing: 'skill-icons/Smithing_icon.png',
+    mining: 'skill-icons/Mining_icon.png',
+    herblore: 'skill-icons/Herblore_icon.png',
+    agility: 'skill-icons/Agility_icon.png',
+    thieving: 'skill-icons/Thieving_icon.png',
+    slayer: 'skill-icons/Slayer_icon.png',
+    farming: 'skill-icons/Farming_icon.png',
+    runecraft: 'skill-icons/Runecraft_icon.png',
+    hunter: 'skill-icons/Hunter_icon.png',
+    construction: 'skill-icons/Construction_icon.png'
+  };  
+export default skills;
