@@ -3,6 +3,7 @@ import SkillSelect from './components/SkillSelect';
 import LevelInput from './components/LevelInput';
 import { fetchStats } from './utils/fetchStats';
 import { calculateXP } from './utils/xpCalculator';
+import './App.css';
 
 const App = () => {
   const [username, setUsername] = useState('');
@@ -35,28 +36,32 @@ const App = () => {
   };
 
   return (
-    <div>
-      <input 
-        type="text" 
-        placeholder="Username" 
-        value={username}
-        onChange={handleUsernameChange} 
-      />
-      <button onClick={fetchPlayerStats}>Fetch Stats</button>
-
-      <SkillSelect onSkillChange={handleSkillChange} />
-
-      <LevelInput 
-        onTargetLevelChange={(e) => setTargetLevel(e.target.value)} 
-        currentLevel={playerStats[selectedSkill] ? playerStats[selectedSkill].level : ''} 
-        currentXp={playerStats[selectedSkill] ? playerStats[selectedSkill].xp : ''} 
-        targetLevel={targetLevel}
-      />
-      
+    <div className="container">
+      <div className="form-group">
+        <input 
+          type="text" 
+          placeholder="Username" 
+          value={username}
+          onChange={handleUsernameChange} 
+        />
+        <button onClick={fetchPlayerStats}>Fetch Stats</button>
+      </div>
+  
+      <div className="form-group-row">
+        <SkillSelect onSkillChange={handleSkillChange} />
+        <LevelInput 
+          onTargetLevelChange={(e) => setTargetLevel(e.target.value)} 
+          currentLevel={playerStats[selectedSkill] ? playerStats[selectedSkill].level : ''} 
+          currentXp={playerStats[selectedSkill] ? playerStats[selectedSkill].xp : ''} 
+          targetLevel={targetLevel}
+        />
+      </div>
+  
       <button onClick={calculate}>Calculate XP</button>
       {xpNeeded !== null && <p>XP Needed: {xpNeeded}</p>}
     </div>
   );
+  
 };
 
 export default App;
